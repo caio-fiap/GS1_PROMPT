@@ -1,4 +1,6 @@
-"""Interface CLI estilo Claude Code — usa Rich + prompt-toolkit."""
+"""
+Interface CLI estilo Claude Code — usa Rich + prompt-toolkit.
+"""
 
 from rich.console import Console
 from rich.panel import Panel

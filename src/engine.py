@@ -1,4 +1,7 @@
-"""Motor de análise da Mission Control AI."""
+"""
+Motor de análise da Mission Control AI.
+"""
+
 import os
 from ollama import Client
 from dotenv import load_dotenv
