@@ -1,0 +1,41 @@
+{
+  "cenarios": [
+    {
+      "id": "normal",
+      "descricao": "Operação normal - todos os parâmetros dentro do range",
+      "forcar_crise": null,
+      "pergunta_teste": "Como está a missão atualmente?"
+    },
+    {
+      "id": "foco_calor_critico",
+      "descricao": "Foco de calor crítico - sensor térmico em emergência",
+      "forcar_crise": "sensor_termico",
+      "pergunta_teste": "/crise fogo"
+    },
+    {
+      "id": "sensor_optico_degradado",
+      "descricao": "Sensor ópico comprometido - dados de desmatamento em risco",
+      "forcar_crise": "sensor_optico",
+      "pergunta_teste": "/crise optico"
+    },
+    {
+      "id": "buffer_cheio",
+      "descricao": "Buffer quase cheio - risco de perda de imagens",
+      "forcar_crise": "buffer_imagens",
+      "pergunta_teste": "/crise buffer"
+    },
+    {
+      "id": "emergencia_energetica",
+      "descricao": "Emergência energética - painéis solares insuficientes",
+      "forcar_crise": "energia disponível",
+      "pergunta_teste": "/crise energia"
+    }
+  ],
+  "perguntas_livres": [
+    "Qual o estado atual dos sensores?",
+    "Há risco para as brigadas de combate a incêndio hoje?",
+    "O INPE consegue usar os dados que estamos gerando?",
+    "Qual o impacto ambiental da missão hoje?",
+    "Temos energia suficiente para a próxima passagem orbital?"
+  ]
+}
