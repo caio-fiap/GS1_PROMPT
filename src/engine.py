@@ -47,7 +47,7 @@ def llm(prompt: str, system: str | None = None, max_tokens=800, temperature=0.3)
         data = resp.json()
         return data["messages"]["content"].strip()
     except requests.exceptions.ConnectionError:
-        return("⚠ Não foi possível conectar ao Ollama Cloud.\nVerifique sua conexão com a internet e tente novamente.")
+        return "⚠ Não foi possível conectar ao Ollama Cloud.\nVerifique sua conexão com a internet e tente novamente."
     except requests.exceptions.Timeout:
         return "⚠ Timeout ao aguardar resposta da IA. Tente novamente."
     except Exception as e:
@@ -128,20 +128,48 @@ class MissionEngine:
 
         return "\n".join(linhas)
 
-def analyze(self, pergunta_usuario):
+def analyze(self, pergunta: str) -> str:
         """Analisa a pergunta com base na telemetria + alertas + IA."""
-        # TODO (foco do trabalho):
-        # 1. Coletar dados via src.telemetria.coletar()
-        # 2. Avaliar alertas via src.alertas.avaliar(dados)
-        # 3. Montar prompt com dados + alertas + pergunta
-        # 4. Chamar llm(prompt, system=self.system_prompt)
-        # 5. Retornar a resposta
-        return (
-            "🛠 Implementação pendente.\n\n"
-            "Olá! A interface CLI está funcionando, mas a lógica\n"
-            "de análise ainda não foi conectada. O grupo precisa:\n\n"
-            " 1. Completar src/telemetria.py\n"
-            " 2. Completar src/alertas.py\n"
-            " 3. Escrever o system prompt em prompts/system_prompt.md\n"
-            " 4. Sobrescrever analyze() em src/engine.py"
-        )
+        forcar_crise = None
+
+        if pergunta.startswith("/crise"):
+            mapa = {
+                "fogo": "sensor_termico",
+                "optico": "sensor_optico",
+                "buffer": "buffer_imagens",
+                "energia": "energia_disponivel",
+                "geo": "precisao_geo",
+                "payload": "temperatura_payload",
+            }
+            partes = pergunta.split()
+            chave = partes[1].lower() if len(partes) > 1 else "fogo"
+            forcar_crise = mapa.get(chave, "sensor_termico")
+            pergunta = f"Ocorreu uma crise no parâmetro '{forcar_crise}'. Analise a situação, explique o impacto terrestre e recomende ações imediatas."
+
+
+        elif pergunta.strip() == "normal":
+            pergunta = "O satélite está operando normalmente. Faça um resumo do estado atual da missão e do impacto positivo que estamos gerando no monitoramento ambiental brasileiro."
+
+        #pipeline: coleta -> avalia -> monta prompt -> chama ia
+        dados = self._atualizar(forcar_crise=forcar_crise)
+        alertas = self._ultimo_alertas
+        modo = self._ultimo_modo
+
+        telemetria_txt = tel.formatar_p_prompt(dados)
+        alertas_txt = alrt.alertas_para_prompt(alertas)
+        historico_txt = _resumo_historico()
+
+        prompt = f"""{telemetria_txt}
+        
+                {alertas_txt}
+                
+                {historico_txt}
+                
+                MODO DE OPERAÇÃO ATUAL: {modo}
+                
+                ---
+                
+                PERGUNTA DO OPERADOR: 
+                {pergunta}""".strip()
+
+        return llm(prompt, system=self.system_prompt)
