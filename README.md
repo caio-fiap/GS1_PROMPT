@@ -26,8 +26,8 @@ As personas mais atendidas são:
 5. Execute: `python main.py`
 
 ## Demonstração
-![Status normal da missão](assets/screenshot.normal.png)
-![Status crítico com análise de IA](assets/screenshot.alerta.png)
+![Status normal da missão](assets/ futuro screenshot normal aqui)
+![Status crítico com análise de IA](assets/ futuro screenshot de alerta aqui)
 
 ## System Prompt
 [System Prompt](prompts/system_prompt.md)
@@ -35,5 +35,12 @@ As personas mais atendidas são:
 ## Cenários de testes demonstrados
 1. Operação normal — todos os parâmetros dentro do range
 2. Temperatura crítica — alerta + análise de IA
-3. Baixa energia - resposta automatizada
-4. 
+3. Baixa energia — resposta automatizada
+4. Precisão geológica — alerta + resposta automatizada
+
+## Limitações conhecidas
+Fisicamente, sistema não considera perda de comunicação com a central e não especifica os possíveis danos a blindagem do satélite.  
+Quanto ao software, a telemetria é completamente "fake", não há conexão com nada real (como APIs meteorológicas ou integração com INPE, IBAMA etc), e é totalmente dependente do Ollama Cloud.
+
+## Vídeo de demonstração
+🎥 [Assistir no YouTube](https://www.youtube.com/watch?v= Futuro link aqui)
