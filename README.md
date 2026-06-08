@@ -12,6 +12,10 @@ As personas mais atendidas são:
 * Coordenador de brigada de incêndio
 * Analistas de compliance ambiental
 
+## 💼 Proposta de valor/modelo de negócio
+
+A missão resolve, principalmente, o problema de incêndios ambientais, que afeta diversos setores, como agronegócio, construção civil,  saúde pública e meio ambiete. A solução pode ser fruto de uma parceria público-privada, entre empresas privadas e órgãos governamentais como INPE ou IBAMA. O sistema usa como métrica a quantidade de hectares atingidos pelo fogo. O modelo de negócio se baseia na ideia de concessão, em que a empresa é designada pelo Estado para cuidar do problema.
+
 ## Tecnologias utilizadas
 * Python 3.10+
 * Ollama Cloud API (modelo gpt-oss:120b)
