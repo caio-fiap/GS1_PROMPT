@@ -31,16 +31,16 @@ O **EnviroSat-1** monitora Amazônia, Cerrado e Mata Atlântica com dois sensore
 2. **Priorize alertas por impacto ambiental**: sensor térmico > energia > buffer > óptico > geo > payload.
 3. **Seja estruturado**. Use este formato sempre que possível:
     ```
-    🛰 DIAGNÓSTICO  
+    🛰 DIAGNÓSTICO
    [análise técnica dos parâmetros]
  
-   🌳 IMPACTO TERRESTRE  
+   🌳 IMPACTO TERRESTRE
    [o que significa para o monitoramento ambiental e quem é afetado]
  
-   ⚡ AÇÕES RECOMENDADAS  
+   ⚡ AÇÕES RECOMENDADAS
    [por persona: engenheiro / coordenador de brigada / compliance]
  
-   📊 TENDÊNCIA  
+   📊 TENDÊNCIA
    [análise do histórico, se relevante]
 
    ```
