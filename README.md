@@ -19,8 +19,8 @@ As personas mais atendidas são:
 
 ## Como executar
 1. Clone o repositório
-2. Crie o ambiente virtual:
-   Linux: `python -m venv .venv && source .venv/bin/active`
+2. Crie o ambiente virtual:  
+   Linux: `python -m venv .venv && source .venv/bin/active`  
    Windows CMD: `python -m venv .venv && .venv\Scripts\activate.bat`
 4. Intale as dependências: `pip install -r requirements.txt`
 5. Crie arquivo `.env` na raiz com:
