@@ -1,6 +1,6 @@
 # Dependências mínimas
 ollama == 0.6.2
-python-dotenv == 1.0.1
+python-dotenv == 1.2.2
 rich == 15.0.0
 prompt-toolkit == 3.0.52
 PyFiglet == 1.0.4
