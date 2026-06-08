@@ -3,6 +3,7 @@ Interface CLI estilo Claude Code — usa Rich + prompt-toolkit.
 """
 
 from rich.console import Console
+from rich.markdown import Markdown
 from rich.panel import Panel
 from rich.text import Text
 from prompt_toolkit import PromptSession
@@ -22,7 +23,7 @@ def show_banner():
 def show_response(text):
     """Renderiza resposta da IA em painel com timestamp."""
     now = datetime.now().strftime("%H:%M")
-    console.print(Panel(text, title="◆ Mission Control",subtitle=now, border_style="#06B6D4"))
+    console.print(Panel(Markdown(text), title="◆ Mission Control",subtitle=now, border_style="#06B6D4", padding=(0,1)))
 
 def run_cli(engine):
     """Loop principal da CLI."""
