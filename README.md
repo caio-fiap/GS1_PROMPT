@@ -19,11 +19,13 @@ As personas mais atendidas são:
 
 ## Como executar
 1. Clone o repositório
-2. Crie o ambiente virtual: `python -m venv .venv && source .venv/bin/active`
-3. Intale as dependências: `pip install -r requirements.txt`
-4. Crie arquivo `.env` na raiz com:
+2. Crie o ambiente virtual:
+   Linux: `python -m venv .venv && source .venv/bin/active`
+   Windows CMD: `python -m venv .venv && .venv\Scripts\activate.bat`
+4. Intale as dependências: `pip install -r requirements.txt`
+5. Crie arquivo `.env` na raiz com:
    `OLLAMA_API_KEY=sua_chave_aqui`
-5. Execute: `python main.py`
+6. Execute: `python main.py`
 
 ## Demonstração
 ![Status normal da missão](assets/ futuro screenshot normal aqui)
