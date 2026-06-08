@@ -14,7 +14,7 @@ load_dotenv()
 # configuração do ollama cloud
 TRILHA = "envirosat"
 SATELITE = "EnviroSat-1 (similar Amazônia-1)"
-OLLAMA_HOST = "https://ollama.com"
+OLLAMA_HOST = "https://ollama.com/v1"
 OLLAMA_MODEL = "gpt-oss:120b"
 _API_KEY = os.environ.get('OLLAMA_API_KEY')
 
@@ -41,10 +41,10 @@ def llm(prompt: str, system: str | None = None, max_tokens=800, temperature=0.3)
     }
 
     try:
-        resp = requests.post(f"OLLAMA_HOST/api/chat", json=payload, headers=headers, timeout=60)
+        resp = requests.post(f"{OLLAMA_HOST}/chat/completions", json=payload, headers=headers, timeout=60)
         resp.raise_for_status()
         data = resp.json()
-        return data["messages"]["content"].strip()
+        return data["choices"][0]["message"]["content"].strip()
     except requests.exceptions.ConnectionError:
         return "⚠ Não foi possível conectar ao Ollama Cloud.\nVerifique sua conexão com a internet e tente novamente."
     except requests.exceptions.Timeout:
@@ -73,7 +73,7 @@ def _resumo_historico() -> str:
 class MissionEngine:
     """Motor de análise — vocês completam os métodos abaixo."""
 
-    def _init(self):
+    def __init__(self):
         self.trilha = TRILHA
         self.system_prompt = load_system_prompt()
         self.ultimo_ciclo = None
@@ -89,13 +89,13 @@ class MissionEngine:
         dados["modo_operacao"] = modo
         self._ultimo_ciclo = dados
         self._ultimo_alertas = alertas
-        self.ultimo_modo = modo
+        self._ultimo_modo = modo
         return dados
 
     def status_snapshot(self) -> str:
         """Retorna texto resumindo o estado atual da telemetria."""
         dados = self._atualizar()
-        alertas = self._ultimo_alertas()
+        alertas = self._ultimo_alertas
         modo = self._ultimo_modo
 
         icone = {"NORMAL": "🟢", "ATENÇÃO": "🟡", "CRÍTICO": "🔴", "EMERGÊNCIA": "🚨"}.get(modo, "⚪")
@@ -127,7 +127,7 @@ class MissionEngine:
 
         return "\n".join(linhas)
 
-def analyze(self, pergunta: str) -> str:
+    def analyze(self, pergunta: str) -> str:
         """Analisa a pergunta com base na telemetria + alertas + IA."""
         forcar_crise = None
 
