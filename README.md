@@ -25,7 +25,7 @@ As personas mais atendidas são:
    Windows CMD: `python -m venv .venv && .venv\Scripts\activate.bat`
 4. Intale as dependências: `pip install -r requirements.txt`
 5. Crie arquivo `.env` na raiz com:
-   `echo OLLAMA_API_KEY=sua_chave_aqui > .env`
+   Linux e Windows CMD: `echo OLLAMA_API_KEY=sua_chave_aqui > .env`
 6. Execute: `python main.py`
 
 ## Demonstração
