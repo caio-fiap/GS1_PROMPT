@@ -3,7 +3,6 @@ Motor de análise da Mission Control AI.
 """
 
 import os
-import json
 import requests
 from dotenv import load_dotenv
 from pathlib import Path
