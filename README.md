@@ -29,8 +29,8 @@ As personas mais atendidas são:
 6. Execute: `python main.py`
 
 ## Demonstração
-![Status normal da missão](assets/ futuro screenshot normal aqui)
-![Status crítico com análise de IA](assets/ futuro screenshot de alerta aqui)
+Normal: ![Status normal da missão](assets/screenshot_normal.png)  
+Alerta: ![Status crítico com análise de IA](assets/screenshot_alerta.png)
 
 ## System Prompt
 [System Prompt](prompts/system_prompt.md)
